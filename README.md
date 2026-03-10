@@ -1,0 +1,3 @@
+# Alternative Text Checker - Extension
+
+

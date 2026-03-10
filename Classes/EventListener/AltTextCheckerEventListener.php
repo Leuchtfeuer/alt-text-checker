@@ -13,11 +13,10 @@ declare(strict_types=1);
 
 namespace Leuchtfeuer\AltTextChecker\EventListener;
 
-use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+
 use TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent;
 use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 
 /**
  * This event listener listens to PSR-14 events given in TYPO3 10 and above.
@@ -25,8 +24,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class AltTextCheckerEventListener
 {
     /**
-     * Adds a warning icon to indicate that some file references
-     * do not have alternative text (Alt-Text) set.
+     * "Alternative Text Checker": Adds a warning icon to indicate that a file
+     * or some of its references do not have alternative text (Alt-Text) set.
      *
      * @param ModifyIconForResourcePropertiesEvent $event
      */

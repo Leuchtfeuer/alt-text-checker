@@ -1,0 +1,30 @@
+{
+	"name": "leuchtfeuer/alt-text-checker",
+	"description": "Alternative Text Checker - Extension",
+	"type": "typo3-cms-extension",
+	"minimum-stability": "stable",
+	"version": "13.4.0",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://www.Leuchtfeuer.com",
+	"authors": [
+		{
+			"name": "Team YD",
+			"email": "team-yd@Leuchtfeuer.com",
+			"role": "Developer",
+			"homepage": "https://www.Leuchtfeuer.com"
+		}
+	],
+	"require": {
+		"typo3/cms-core": "^13.4"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "alt_text_checker"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Leuchtfeuer\\AltTextChecker\\": "Classes/"
+		}
+	}
+}

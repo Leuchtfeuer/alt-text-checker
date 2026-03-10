@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:alt_text_checker/Resources/Private/Language/locallang.xlf" date="2026-03-10T13:53:55Z" product-name="alt_text_checker">
+		<header/>
+		<body>
+			<trans-unit id="references.column" resname="references.column">
+				<source>Alternative text</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

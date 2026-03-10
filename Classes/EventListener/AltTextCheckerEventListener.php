@@ -36,7 +36,6 @@ class AltTextCheckerEventListener
     {
         $resource = $event->getResource();
 
-
         if (!$resource instanceof File) {
             return;
         }
@@ -44,9 +43,10 @@ class AltTextCheckerEventListener
         $fileUid = $resource->getUid();
         $fileAlternativeText = $resource->getProperty('alternative');
 
-        if (!$fileAlternativeText || $this->referencesHaveMissingAltText($fileUid)) {
+        if (empty($fileAlternativeText) || $this->referencesHaveMissingAltText($fileUid)) {
             $event->setOverlayIdentifier('overlay-warning');
         }
+
     }
     private function referencesHaveMissingAltText(int $fileId): bool
     {
@@ -58,14 +58,11 @@ class AltTextCheckerEventListener
             ->from('sys_file_reference')
             ->where(
                 $queryBuilder->expr()->eq('uid_local',
-                    $queryBuilder->createNamedParameter($fileId, Connection::PARAM_INT)),
+                $queryBuilder->createNamedParameter($fileId, Connection::PARAM_INT)),
                 $queryBuilder->expr()->eq('deleted', 0),
-                $queryBuilder->expr()->or(
-                    $queryBuilder->expr()->isNull('alternative'),
-                    $queryBuilder->expr()->eq('alternative',
-                        $queryBuilder->createNamedParameter(''))
-                )
+                $queryBuilder->expr()->isNull('alternative'),
             )
+
             ->executeQuery()
             ->fetchOne();
 

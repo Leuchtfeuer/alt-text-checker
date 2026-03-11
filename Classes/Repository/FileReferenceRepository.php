@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the "Kickstarter Website".
- *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
@@ -15,6 +13,7 @@ namespace Leuchtfeuer\AltTextChecker\Repository;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Resource\File;
 
 class FileReferenceRepository
 {
@@ -25,8 +24,10 @@ class FileReferenceRepository
     /**
      * @return array<int, array<string, mixed>>
      */
-    public function findReferencesByFileUid(int $fileId): array
+    public function findReferencesByFile(File $file): array
     {
+        $fileUid = $file->getUid();
+
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE);
 
         return $queryBuilder
@@ -36,7 +37,7 @@ class FileReferenceRepository
                 $queryBuilder->expr()->eq(
                     'uid_local',
                     $queryBuilder->createNamedParameter(
-                        $fileId,
+                        $fileUid,
                         Connection::PARAM_INT
                     )
                 ),
@@ -64,7 +65,7 @@ class FileReferenceRepository
                         Connection::PARAM_INT
                     )
                 ),
-                 $queryBuilder->expr()->eq('deleted', 0),
+                $queryBuilder->expr()->eq('deleted', 0),
             )
             ->executeQuery()
             ->fetchAllAssociative();

@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the "Kickstarter Website".
- *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
@@ -32,16 +30,15 @@ class AltTextCheckerEventListener
      */
     public function onFileModuleSetWarningIconForMissingAltText(ModifyIconForResourcePropertiesEvent $event): void
     {
-        $resource = $event->getResource();
+        $file = $event->getResource();
 
-        if (!$resource instanceof File) {
+        if (!$file instanceof File) {
             return;
         }
 
-        $fileUid = $resource->getUid();
-        $fileAlternativeText = $resource->getProperty('alternative');
+        $fileAlternativeText = $file->getProperty('alternative');
 
-        $fileReferences = $this->fileReferenceRepository->findReferencesByFileUid($fileUid);
+        $fileReferences = $this->fileReferenceRepository->findReferencesByFile($file);
         $getIfReferencesHaveAltText = $this->fileReferenceAltTextChecker->hasAltText($fileReferences);
 
         if (empty($fileAlternativeText) || !$getIfReferencesHaveAltText) {

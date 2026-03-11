@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the "Kickstarter Website".
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * (c) Leuchtfeuer Digital Marketing <dev@Leuchtfeuer.com>
+ */
+
 namespace Leuchtfeuer\AltTextChecker\ViewHelpers;
 
 use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
@@ -17,7 +26,8 @@ class HasAlternativeTextViewHelper extends AbstractViewHelper
 
     public function render(): string
     {
-        $refUid = (int)$this->arguments['refUid'];
+        /** @var int $refUid */
+        $refUid = $this->arguments['refUid'];
 
         $fileReferences = $this->fileReferenceRepository->findReferenceByUid($refUid);
         $getIfReferenceHasAltText = $this->fileReferenceAltTextChecker->hasAltText($fileReferences);

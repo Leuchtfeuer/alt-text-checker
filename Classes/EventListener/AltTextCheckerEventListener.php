@@ -13,17 +13,18 @@ declare(strict_types=1);
 
 namespace Leuchtfeuer\AltTextChecker\EventListener;
 
-use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
+use Leuchtfeuer\AltTextChecker\Service\FileReferenceAltTextChecker;
 use TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent;
 use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This event listener listens to PSR-14 events given in TYPO3 10 and above.
  */
 class AltTextCheckerEventListener
 {
+
+    public function __construct(protected FileReferenceAltTextChecker $fileReferenceAltTextChecker, protected FileReferenceRepository $fileReferenceRepository) {}
     /**
      * "Alternative Text Checker": Adds a warning icon to indicate that a file
      * or some of its references do not have alternative text (Alt-Text) set.
@@ -41,32 +42,13 @@ class AltTextCheckerEventListener
         $fileUid = $resource->getUid();
         $fileAlternativeText = $resource->getProperty('alternative');
 
-        if (empty($fileAlternativeText) || $this->referencesHaveMissingAltText($fileUid)) {
+        $fileReferences = $this->fileReferenceRepository->findReferencesByFileUid($fileUid);
+        $getIfReferencesHaveAltText = $this->fileReferenceAltTextChecker->hasAltText($fileReferences);
+
+        if (empty($fileAlternativeText) || !$getIfReferencesHaveAltText) {
             $event->setOverlayIdentifier('overlay-warning');
         }
 
-    }
-    private function referencesHaveMissingAltText(int $fileId): bool
-    {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable('sys_file_reference');
-
-        $count = $queryBuilder
-            ->count('uid')
-            ->from('sys_file_reference')
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'uid_local',
-                    $queryBuilder->createNamedParameter($fileId, Connection::PARAM_INT)
-                ),
-                $queryBuilder->expr()->eq('deleted', 0),
-                $queryBuilder->expr()->isNull('alternative'),
-            )
-
-            ->executeQuery()
-            ->fetchOne();
-
-        return $count > 0;
     }
 
 }

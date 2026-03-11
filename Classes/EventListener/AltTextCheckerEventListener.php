@@ -23,7 +23,6 @@ use TYPO3\CMS\Core\Resource\File;
  */
 class AltTextCheckerEventListener
 {
-
     public function __construct(protected FileReferenceAltTextChecker $fileReferenceAltTextChecker, protected FileReferenceRepository $fileReferenceRepository) {}
     /**
      * "Alternative Text Checker": Adds a warning icon to indicate that a file

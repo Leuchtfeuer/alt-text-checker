@@ -192,8 +192,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <f:for each="{refLines}" as="refLine">
-                            <f:render section="refLineRow" arguments="{line: refLine, maxTitleLength: maxTitleLength}" />
+                        <f:for each="{refLines}" as="refLine" iteration="refLineIterator">
+                            <f:render section="refLineRow" arguments="{line: refLine, maxTitleLength: maxTitleLength, iterator: refLineIterator}" />
                         </f:for>
                         </tbody>
                     </table>
@@ -270,7 +270,14 @@
         <td>{line.row.flexpointer}</td>
         <td>{line.row.softref_key}</td>
         <td>{line.row.sorting}</td>
-        <td><m:hasAlternativeText refUid="{line.row.recuid}" /></td>
+        <td>
+            <f:if condition="{iterator.index} == 0">
+                <f:translate key="{line.record.alternative -> f:if(condition: '{line.record.alternative}', then: 'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes', else: 'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.no')}" />
+            </f:if>
+            <f:if condition="{iterator.index} != 0">
+                <m:hasAlternativeText refUid="{line.row.recuid}" />
+            </f:if>
+        </td>
         <td class="col-control">
             <f:render section="action" arguments="{line: line.actions}" />
         </td>

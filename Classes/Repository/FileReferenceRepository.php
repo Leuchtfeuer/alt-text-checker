@@ -51,8 +51,7 @@ class FileReferenceRepository
      */
     public function findReferenceByUid(int $refUid): array
     {
-        $queryBuilder =
-            $this->connectionPool->getQueryBuilderForTable(self::TABLE);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE);
 
         return $queryBuilder
             ->select('*')
@@ -64,7 +63,8 @@ class FileReferenceRepository
                         $refUid,
                         Connection::PARAM_INT
                     )
-                )
+                ),
+                 $queryBuilder->expr()->eq('deleted', 0),
             )
             ->executeQuery()
             ->fetchAllAssociative();

@@ -6,6 +6,12 @@
 			<trans-unit id="references.column" resname="references.column">
 				<source>Alternative text</source>
 			</trans-unit>
+			<trans-unit id="alt_text.yes" resname="alt_text.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="alt_text.no" resname="alt_text.no">
+				<source>No</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

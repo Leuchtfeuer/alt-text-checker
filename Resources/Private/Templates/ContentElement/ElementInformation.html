@@ -2,8 +2,11 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
     xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    xmlns:m="http://typo3.org/ns/Leuchtfeuer\AltTextChecker/ViewHelpers"
     data-namespace-typo3-fluid="true"
 >
+
+
 
 <f:layout name="Module" />
 
@@ -267,7 +270,7 @@
         <td>{line.row.flexpointer}</td>
         <td>{line.row.softref_key}</td>
         <td>{line.row.sorting}</td>
-        <td>Test text</td>
+        <td><m:hasAlternativeText refUid="{line.row.recuid}" /></td>
         <td class="col-control">
             <f:render section="action" arguments="{line: line.actions}" />
         </td>

@@ -60,14 +60,6 @@ class AltTextCheckerEventListener
             $altText = $fileReference->getAlternative();
 
             if (empty($altText)) {
-                $overlay = $this->pageRepository->getLanguageOverlay(
-                    FileReferenceRepository::TABLE,
-                    $fileReference->getProperties()
-                );
-                $altText = $overlay['alternative'] ?? '';
-            }
-
-            if (empty($altText)) {
                 return false;
             }
         }

@@ -10,6 +10,7 @@
 namespace Leuchtfeuer\AltTextChecker\ViewHelpers;
 
 use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -17,7 +18,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class HasAlternativeTextViewHelper extends AbstractViewHelper
 {
-    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected ResourceFactory $resourceFactory, protected PageRepository $pageRepository) {}
+    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected ResourceFactory $resourceFactory, protected PageRepository $pageRepository, protected Context $context) {}
     public function initializeArguments(): void
     {
         $this->registerArgument('refUid', 'int', 'File Reference Uid', true);
@@ -30,11 +31,6 @@ class HasAlternativeTextViewHelper extends AbstractViewHelper
 
         $fileReference = $this->resourceFactory->getFileReferenceObject($refUid);
         $altText = $fileReference->getAlternative();
-
-        if (empty($altText)) {
-            $overlay = $this->pageRepository->getLanguageOverlay(FileReferenceRepository::TABLE, $fileReference->getProperties());
-            $altText = $overlay['alternative'] ?? '';
-        }
 
         if (!empty($altText)) {
             return LocalizationUtility::translate('LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes') ?? 'Yes';

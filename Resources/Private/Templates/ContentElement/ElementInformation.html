@@ -192,8 +192,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <f:for each="{refLines}" as="refLine" iteration="refLineIterator">
-                            <f:render section="refLineRow" arguments="{line: refLine, maxTitleLength: maxTitleLength, iterator: refLineIterator}" />
+                        <f:for each="{refLines}" as="refLine">
+                            <f:render section="refLineRow" arguments="{line: refLine, maxTitleLength: maxTitleLength}" />
                         </f:for>
                         </tbody>
                     </table>
@@ -271,11 +271,20 @@
         <td>{line.row.softref_key}</td>
         <td>{line.row.sorting}</td>
         <td>
-            <f:if condition="{iterator.index} == 0">
-                <f:translate key="{line.record.alternative -> f:if(condition: '{line.record.alternative}', then: 'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes', else: 'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.no')}" />
-            </f:if>
-            <f:if condition="{iterator.index} != 0">
-                <m:hasAlternativeText refUid="{line.row.recuid}" />
+            <f:if condition="{line.parentRecord}">
+                <f:then>
+                    <m:hasAlternativeText refUid="{line.row.recuid}" />
+                </f:then>
+                <f:else>
+                    <f:if condition="{line.record.alternative}">
+                        <f:then>
+                            <f:translate key="LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes" />
+                        </f:then>
+                        <f:else>
+                            <f:translate key="LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.no" />
+                        </f:else>
+                    </f:if>
+                </f:else>
             </f:if>
         </td>
         <td class="col-control">

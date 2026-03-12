@@ -12,16 +12,18 @@ declare(strict_types=1);
 namespace Leuchtfeuer\AltTextChecker\EventListener;
 
 use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
-use Leuchtfeuer\AltTextChecker\Service\FileReferenceAltTextChecker;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent;
 use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Resource\FileRepository;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 
 /**
  * This event listener listens to PSR-14 events given in TYPO3 10 and above.
  */
 class AltTextCheckerEventListener
 {
-    public function __construct(protected FileReferenceAltTextChecker $fileReferenceAltTextChecker, protected FileReferenceRepository $fileReferenceRepository) {}
+    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected FileRepository $fileRepository, protected ResourceFactory $resourceFactory, protected PageRepository $pageRepository) {}
     /**
      * "Alternative Text Checker": Adds a warning icon to indicate that a file
      * or some of its references do not have alternative text (Alt-Text) set.
@@ -37,14 +39,40 @@ class AltTextCheckerEventListener
         }
 
         $fileAlternativeText = $file->getProperty('alternative');
-
         $fileReferences = $this->fileReferenceRepository->findReferencesByFile($file);
-        $getIfReferencesHaveAltText = $this->fileReferenceAltTextChecker->hasAltText($fileReferences);
 
-        if (empty($fileAlternativeText) || !$getIfReferencesHaveAltText) {
+        if (empty($fileAlternativeText) || !$this->hasAltText($fileReferences)) {
             $event->setOverlayIdentifier('overlay-warning');
         }
 
+    }
+
+    /**
+     * @param array<int, array<string, mixed>> $fileReferences
+     * @return bool
+     */
+    public function hasAltText(array $fileReferences): bool
+    {
+        foreach ($fileReferences as $reference) {
+            /** @var int $refUid */
+            $refUid = $reference['uid'];
+            $fileReference = $this->resourceFactory->getFileReferenceObject($refUid);
+            $altText = $fileReference->getAlternative();
+
+            if (empty($altText)) {
+                $overlay = $this->pageRepository->getLanguageOverlay(
+                    FileReferenceRepository::TABLE,
+                    $fileReference->getProperties()
+                );
+                $altText = $overlay['alternative'] ?? '';
+            }
+
+            if (empty($altText)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

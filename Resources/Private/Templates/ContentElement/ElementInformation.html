@@ -271,7 +271,7 @@
         <td>{line.row.softref_key}</td>
         <td>{line.row.sorting}</td>
         <td>
-            <f:if condition="{line.parentRecord}">
+            <f:if condition="{line.row.tablename} != sys_file_metadata">
                 <f:then>
                     <m:hasAlternativeText refUid="{line.row.recuid}" tableName="{line.row.tablename}" field="{line.row.field}" />
                 </f:then>

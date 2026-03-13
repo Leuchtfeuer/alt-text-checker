@@ -12,10 +12,8 @@ declare(strict_types=1);
 namespace Leuchtfeuer\AltTextChecker\EventListener;
 
 use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
-use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent;
 use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 
 /**

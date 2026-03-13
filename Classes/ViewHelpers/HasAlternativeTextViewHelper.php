@@ -9,11 +9,7 @@
 
 namespace Leuchtfeuer\AltTextChecker\ViewHelpers;
 
-use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
-use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Resource\FileRepository;
-use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 

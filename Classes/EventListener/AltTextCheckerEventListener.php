@@ -23,7 +23,7 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
  */
 class AltTextCheckerEventListener
 {
-    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected FileRepository $fileRepository, protected ResourceFactory $resourceFactory, protected PageRepository $pageRepository) {}
+    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected ResourceFactory $resourceFactory) {}
     /**
      * "Alternative Text Checker": Adds a warning icon to indicate that a file
      * or some of its references do not have alternative text (Alt-Text) set.

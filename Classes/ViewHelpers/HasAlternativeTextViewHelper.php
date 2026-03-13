@@ -18,14 +18,21 @@ class HasAlternativeTextViewHelper extends AbstractViewHelper
     public function __construct(protected FileRepository $fileRepository) {}
     public function initializeArguments(): void
     {
-        $this->registerArgument('contentUid', 'int', 'Content Element Uid', true);
+        $this->registerArgument('refUid', 'int', 'Reference Uid', true);
+        $this->registerArgument('tableName', 'string', 'Table name', true);
+        $this->registerArgument('field', 'string', 'Content Element Uid', true);
     }
 
     public function render(): string
     {
-        /** @var int $contentUid */
-        $contentUid = $this->arguments['contentUid'];
-        $references = $this->fileRepository->findByRelation('tt_content', 'image', $contentUid);
+        /** @var int refUid */
+        $refUid = $this->arguments['refUid'];
+        /** @var string $tableName */
+        $tableName = $this->arguments['tableName'];
+        /** @var string $field */
+        $field = $this->arguments['field'];
+
+        $references = $this->fileRepository->findByRelation($tableName, $field, $refUid);
 
         foreach ($references as $reference) {
             if (empty($reference->getAlternative())) {

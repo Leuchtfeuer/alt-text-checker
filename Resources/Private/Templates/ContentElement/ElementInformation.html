@@ -273,7 +273,7 @@
         <td>
             <f:if condition="{line.parentRecord}">
                 <f:then>
-                    <m:hasAlternativeText contentUid="{line.row.recuid}" />
+                    <m:hasAlternativeText refUid="{line.row.recuid}" tableName="{line.row.tablename}" field="{line.row.field}" />
                 </f:then>
                 <f:else>
                     <f:if condition="{line.record.alternative}">

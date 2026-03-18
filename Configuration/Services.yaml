@@ -7,10 +7,3 @@ services:
   Leuchtfeuer\AltTextChecker\:
     resource: '../Classes/*'
 
-  Leuchtfeuer\AltTextChecker\EventListener\AltTextCheckerEventListener:
-    tags:
-      - name: event.listener
-        identifier: sdl.onFileModuleSetWarningIconForMissingAltText
-        method: onFileModuleSetWarningIconForMissingAltText
-        event: TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent
-

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Leuchtfeuer\AltTextChecker\EventListener;
 
 use Leuchtfeuer\AltTextChecker\Repository\FileReferenceRepository;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Imaging\Event\ModifyIconForResourcePropertiesEvent;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -21,6 +22,7 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
 /**
  * This event listener listens to PSR-14 events given in TYPO3 10 and above.
  */
+#[AsEventListener(method: 'onFileModuleSetWarningIconForMissingAltText')]
 class AltTextCheckerEventListener
 {
     public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected ResourceFactory $resourceFactory) {}
@@ -51,9 +53,8 @@ class AltTextCheckerEventListener
 
     /**
      * @param array<int, array<string, mixed>> $fileReferences
-     * @return bool
      */
-    public function hasAltText(array $fileReferences): bool
+    private function hasAltText(array $fileReferences): bool
     {
         foreach ($fileReferences as $reference) {
             /** @var int $refUid */

@@ -12,6 +12,9 @@ $EM_CONF['alt_text_checker'] = [
     'constraints' => [
         'depends' => [
             'typo3' => '13.4.0-13.4.99',
+            'extbase' => '13.4.0-13.4.99',
+            'fluid' => '13.4.0-13.4.99',
+            'backend' => '13.4.0-13.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],

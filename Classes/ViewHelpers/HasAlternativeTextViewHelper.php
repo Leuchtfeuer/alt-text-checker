@@ -1,10 +1,12 @@
 <?php
 
 /*
+ * This file is part of the "Alternative Text Checker" Extension for TYPO3 CMS.
+ *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) Leuchtfeuer Digital Marketing <dev@Leuchtfeuer.com>
+ * (c) Dev <dev@Leuchtfeuer.com>, Leuchtfeuer Digital Marketing
  */
 
 namespace Leuchtfeuer\AltTextChecker\ViewHelpers;
@@ -16,6 +18,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 class HasAlternativeTextViewHelper extends AbstractViewHelper
 {
     public function __construct(protected FileRepository $fileRepository) {}
+
     public function initializeArguments(): void
     {
         $this->registerArgument('refUid', 'int', 'Reference Uid', true);

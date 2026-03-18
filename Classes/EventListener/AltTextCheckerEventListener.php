@@ -37,13 +37,16 @@ class AltTextCheckerEventListener
             return;
         }
 
-        $fileAlternativeText = $file->getProperty('alternative');
-        $fileReferences = $this->fileReferenceRepository->findReferencesByFile($file);
+        $fileAlternativeText = !empty($file->getProperty('alternative'));
 
-        if (empty($fileAlternativeText) || !$this->hasAltText($fileReferences)) {
-            $event->setOverlayIdentifier('overlay-warning');
+        if ($fileAlternativeText) {
+            $fileReferences = $this->fileReferenceRepository->findReferencesByFile($file);
+            $fileAlternativeText = $this->hasAltText($fileReferences);
         }
 
+        if (!$fileAlternativeText) {
+            $event->setOverlayIdentifier('overlay-warning');
+        }
     }
 
     /**

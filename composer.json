@@ -1,19 +1,26 @@
 {
 	"name": "leuchtfeuer/alt-text-checker",
-	"description": "Alternative Text Checker - Extension",
+	"description": "TYPO3 extension that adds a warning overlay icon in the File List module for files missing alternative text, and adds an Alternative text column to file reference tables in the backend.",
 	"type": "typo3-cms-extension",
 	"minimum-stability": "dev",
 	"license": "GPL-2.0-or-later",
 	"homepage": "https://www.Leuchtfeuer.com",
 	"authors": [
 		{
-			"name": "Team YD",
-			"email": "team-yd@Leuchtfeuer.com",
+			"name": "Dev",
+			"email": "dev@Leuchtfeuer.com",
 			"role": "Developer",
 			"homepage": "https://www.Leuchtfeuer.com"
 		}
 	],
+    "support": {
+      "email": "dev@Leuchtfeuer.com",
+      "issues": "https://github.com/Leuchtfeuer/locate/issues",
+      "source": "https://github.com/Leuchtfeuer/locate/",
+      "docs": "https://docs.typo3.org/p/leuchtfeuer/locate/master/en-us/"
+    },
 	"require": {
+        "php": ">=8.2",
 		"typo3/cms-core": "^13.4",
 		"typo3/cms-extbase": "^13.4",
 		"typo3/cms-fluid": "^13.4",

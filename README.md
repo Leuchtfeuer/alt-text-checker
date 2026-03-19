@@ -25,7 +25,7 @@ The extension hooks into TYPO3's icon rendering via the PSR-14 `ModifyIconForRes
 
 This gives editors a quick visual cue to identify images that need attention before publishing.
 
-![Warning icon in File List](img.png)
+![Warning icon in File List](Documentation/Assets/listview.png)
 ### "Alternative text" column in reference tables
 
 The extension overrides the backend `ElementInformation` template to add an **Alternative text** column to the "References to this item" table. The column shows:
@@ -37,7 +37,7 @@ The extension overrides the backend `ElementInformation` template to add an **Al
 
 The column is visible when viewing the info panel of any file in the backend (click the info icon next to a file in the File List).
 
-![References table with Alternative text column](img_1.png)
+![References table with Alternative text column](Documentation/Assets/tableview.png)
 
 ## How to use
 

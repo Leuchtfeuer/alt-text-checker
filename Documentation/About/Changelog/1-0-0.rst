@@ -1,0 +1,39 @@
+﻿.. include:: ../../Includes.txt
+
+==========================
+Version 1.0.0 - 2026/03/19
+==========================
+
+This is the initial public relase of this extension.
+
+Download
+========
+
+Download this version from the `TYPO3 extension repository <https://extensions.typo3.org/extension/alt-text-checker/>`__ or from
+`GitHub <https://github.com/Leuchtfeuer/alt-text-checker/releases/tag/1.0.0>`__.
+
+All Changes
+===========
+
+This is a list of all changes in this release::
+
+    2026-03-11 [TASK] adding service unit test (Commit 1bf9021 by Akhmed Sagitov)
+    2026-03-11 [TASK] adding Viewhelper (Commit 23c485c by Akhmed Sagitov)
+    2026-03-11 [TASK] adding Service (Commit df626e6 by Akhmed Sagitov)
+    2026-03-11 [TASK] adding FileReferenceRepository (Commit b4ea072 by Akhmed Sagitov)
+    2026-03-10 [TASK] adding template into extension (Commit 8b69430 by Akhmed Sagitov)
+    2026-03-10 [TASK] adding tsconfig and overriding backend template path (Commit 620348b by Akhmed Sagitov)
+    2026-03-10 [TASK] adding referencesHaveMissingAltText methode (Commit 135f2a9 by Akhmed Sagitov)
+    2026-03-10 [TASK] adding ext_emconf.php (Commit 413d88c by Akhmed Sagitov)
+    2026-03-10 [TASK] adding eventlistener to set Icon (Commit f4091b3 by Akhmed Sagitov)
+    2026-03-10 [TASK] adding readme file (Commit 40347cc by Akhmed Sagitov)
+    2026-03-10 [TASK] creating a new extension (Commit d66b8a7 by Akhmed Sagitov)
+
+Contributors
+============
+
+Following people have contributed to this release:
+
+* Akhmed Akhmed Sagitov
+
+Thank you very much for your support. The next beer is on us! 🍻

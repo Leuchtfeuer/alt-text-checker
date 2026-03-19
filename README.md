@@ -54,7 +54,7 @@ Once all missing alt texts are filled in and the cache is cleared, the warning i
 
 ## Localization
 
-The extension ships with English and German translations. To add your own language, create a translation file at:
+The extension ships with English and German translations. To add your own language, create a translation file.
 
 ## License
 

@@ -15,9 +15,9 @@
 	],
     "support": {
       "email": "dev@Leuchtfeuer.com",
-      "issues": "https://github.com/Leuchtfeuer/locate/issues",
-      "source": "https://github.com/Leuchtfeuer/locate/",
-      "docs": "https://docs.typo3.org/p/leuchtfeuer/locate/master/en-us/"
+      "issues": "https://github.com/Leuchtfeuer/alt-text-checker/issues",
+      "source": "https://github.com/Leuchtfeuer/alt-text-checker/",
+      "docs": "https://docs.typo3.org/p/leuchtfeuer/alt-text-checker/master/en-us/"
     },
 	"require": {
         "php": ">=8.2",

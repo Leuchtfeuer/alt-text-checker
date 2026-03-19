@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Resource\File;
 
 class FileReferenceRepository
 {
-    private const string TABLE = 'sys_file_reference';
+    private const TABLE = 'sys_file_reference';
 
     public function __construct(private readonly ConnectionPool $connectionPool) {}
 

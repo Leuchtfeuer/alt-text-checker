@@ -3,9 +3,6 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:alt_text_checker/Resources/Private/Language/locallang.xlf" date="2026-03-10T13:53:55Z" product-name="alt_text_checker">
 		<header/>
 		<body>
-			<trans-unit id="references.column" resname="references.column">
-				<source>Alternative text</source>
-			</trans-unit>
 			<trans-unit id="alt_text.yes" resname="alt_text.yes">
 				<source>Yes</source>
 			</trans-unit>

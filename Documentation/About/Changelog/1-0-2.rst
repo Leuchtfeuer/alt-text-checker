@@ -1,0 +1,30 @@
+﻿.. include:: ../../Includes.txt
+
+==========================
+Version 1.0.2 - 2026/03/24
+==========================
+
+This release replaces the alternative text label with the correct TYPO3 core locallang key.
+
+Download
+========
+
+Download this version from the `TYPO3 extension repository <https://extensions.typo3.org/extension/alt-text-checker/>`__ or from
+`GitHub <https://github.com/Leuchtfeuer/alt-text-checker/releases/tag/1.0.0>`__.
+
+All Changes
+===========
+
+This is a list of all changes in this release::
+
+    2026-03-23 [TASK] fixing code-style [YODA-2802] (Commit 5e82c2d by sagitov)
+    2026-03-23 [TASK] setting TYPO3 core locallang key for alternative text label [YODA-2802] (Commit 4bf1a21 by sagitov)
+
+Contributors
+============
+
+Following people have contributed to this release:
+
+* Akhmed Sagitov
+
+Thank you very much for your support. The next beer is on us! 🍻

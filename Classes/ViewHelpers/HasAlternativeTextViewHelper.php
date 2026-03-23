@@ -39,10 +39,14 @@ class HasAlternativeTextViewHelper extends AbstractViewHelper
 
         foreach ($references as $reference) {
             if (empty($reference->getAlternative())) {
-                return LocalizationUtility::translate('LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.no') ?? 'No';
+                return LocalizationUtility::translate(
+                    'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.no'
+                ) ?? 'No';
             }
         }
 
-        return LocalizationUtility::translate('LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes') ?? 'Yes';
+        return LocalizationUtility::translate(
+            'LLL:EXT:alt_text_checker/Resources/Private/Language/locallang.xlf:alt_text.yes'
+        ) ?? 'Yes';
     }
 }

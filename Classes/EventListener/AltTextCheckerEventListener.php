@@ -25,7 +25,10 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
 #[AsEventListener(method: 'onFileModuleSetWarningIconForMissingAltText')]
 class AltTextCheckerEventListener
 {
-    public function __construct(protected FileReferenceRepository $fileReferenceRepository, protected ResourceFactory $resourceFactory) {}
+    public function __construct(
+        protected FileReferenceRepository $fileReferenceRepository,
+        protected ResourceFactory $resourceFactory
+    ) {}
 
     /**
      * "Alternative Text Checker": Adds a warning icon to indicate that a file
